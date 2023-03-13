@@ -41,6 +41,7 @@ body {
   /* sintaxe reduzida, agrupando todas propriedades css em uma só com o mesmo efeito */
   /* background: color image repeat position/size tem mais opções ver depois na documentação */
   background: var(--bg-url) no-repeat center/cover;
+  height: 100vh;
 }
 
 /* body * seletor universal: significa que vai aplicar para todos os elementos dentro do body */
@@ -192,4 +193,18 @@ footer {
   padding: 24px 0;
   text-align: center;
   font-size: 14px;
+}
+
+/* media queries - o @ é uma at rule 
+e só funciona se tiver
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+no html
+*/
+@media (min-width: 700px) {
+  :root {
+    --bg-url: url(assets/bg-desktop.jpg);
+  }
+  .light {
+    --bg-url: url(assets/bg-desktop-light.jpg);
+  }
 }
