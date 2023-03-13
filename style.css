@@ -113,7 +113,7 @@ Pq display block pega toda a largura disponível da tela
   left: 0;
   animation: slide-out 0.3s;
   z-index: 1;
-
+  cursor: pointer;
   /* estratégia para alinhar elementos com posicionamento absoluto ao centro */
   top: 50%;
   transform: translateY(-50%);
@@ -124,7 +124,7 @@ Pq display block pega toda a largura disponível da tela
 }
 
 #switch button:hover {
-  outline: 8px solid var(--surface-color)
+  outline: 8px solid var(--surface-color);
 }
 
 #switch span {
