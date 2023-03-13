@@ -50,7 +50,8 @@ body * {
 }
 
 #container {
-  width: 360px;
+  width: 100%;
+  max-width: 588px;
   /* border tem 3 propriedades: line-width line-style color */
   /* centralizar uma caixa com largura fixa 
   margin-right: auto;
