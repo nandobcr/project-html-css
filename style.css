@@ -111,6 +111,7 @@ Pq display block pega toda a largura disponível da tela
   border-radius: 50%;
   position: absolute;
   left: 0;
+  animation: slide-out 0.3s;
   z-index: 1;
 
   /* estratégia para alinhar elementos com posicionamento absoluto ao centro */
@@ -119,8 +120,11 @@ Pq display block pega toda a largura disponível da tela
 }
 
 .light #switch button {
-  right: 0;
-  left: initial;
+  animation: slide-in 0.3s forwards;
+}
+
+#switch button:hover {
+  outline: 8px solid var(--surface-color)
 }
 
 #switch span {
@@ -206,5 +210,24 @@ no html
   }
   .light {
     --bg-url: url(assets/bg-desktop-light.jpg);
+  }
+}
+
+/* animation - outra at rule chamada keyframes */
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
   }
 }
