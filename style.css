@@ -1,0 +1,194 @@
+/* reset do css */
+* {
+  margin: 0;
+  padding: 0;
+  /* a medida do tamanho da caixa através da borda
+   quando a medida vem da borda, qualquer padding (preenchimentos internos) ele consegue manter os espaços e medidada das caixas
+  */
+  box-sizing: border-box;
+}
+
+/* outra pseudo-selector (root) */
+:root {
+  --text-color: #ffffff;
+  --bg-url: url(assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.1);
+  --surface-color-hover: rgba(255, 255, 255, 0.05);
+  --social-links-hover: rgba(255, 255, 255, 0.2);
+  --swithc-bg-url: url(assets/moon-stars.svg);
+}
+
+.light {
+  --text-color: #000000;
+  --bg-url: url(assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --social-links-hover: rgba(0, 0, 0, 0.1);
+  --swithc-bg-url: url(assets/sun.svg);
+}
+
+body {
+  /* 
+  background-image: url(assets/bg-mobile.jpg);
+  /* não repete a imagem de fundo
+  background-repeat: no-repeat;
+  background-position: top center;
+  /* a imagem vai cobrir todo o espaço visível
+  background-size: cover;
+  */
+  /* sintaxe reduzida, agrupando todas propriedades css em uma só com o mesmo efeito */
+  /* background: color image repeat position/size tem mais opções ver depois na documentação */
+  background: var(--bg-url) no-repeat center/cover;
+}
+
+/* body * seletor universal: significa que vai aplicar para todos os elementos dentro do body */
+body * {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+
+#container {
+  width: 360px;
+  /* border tem 3 propriedades: line-width line-style color */
+  /* centralizar uma caixa com largura fixa 
+  margin-right: auto;
+  margin-left: auto;
+  /* posso trocar essas duas propriedades em uma só nesse caso 
+  margin: auto; que coloca margin em todos os quatro cantos top, bottom, left e right 
+  Entretanto tem uma regra no css que ele não aplica o margin no top e bottom 
+  
+  Propriedades do margin: top, right, bottom e left 
+  Quando eu tenho margin: 56px auto
+  ele aplica 56px no top e bottom e auto nas laterais
+  
+  Quando eu tenho margin: 56px auto 0px;
+  ele aplica 56px no top, auto nas laterais e 0 no bottom
+  */
+  margin: 56px auto 0px;
+  padding: 0 24px;
+}
+
+/* para alinhar ao centro um filho que é display inline, eu posso pegar o elemento pai e alinhar com o text-align 
+só funciona com elementos filhos display inline, display block não vai alinhar o elemento filho ao centro com margin: auto
+Pq display block pega toda a largura disponível da tela
+*/
+
+/* profile */
+#profile {
+  text-align: center;
+  padding: 24px;
+}
+
+#profile img {
+  width: 112px;
+  /* regra de display: a tag img é por padrão display inline, o margin: auto não se aplica para alinhas 
+  caixa de largura fixa ao centro, quando o elemento é display inline */
+}
+
+#profile p {
+  font-weight: 500;
+  /* font-size: 16px; tamanho padrão dos navegadores, não preciso declarar aqui */
+  line-height: 24px;
+  margin-top: 8px;
+}
+
+#switch {
+  position: relative;
+  width: 64px;
+  margin: 4px auto;
+}
+
+/* switch */
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: #ffffff var(--swithc-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  z-index: 1;
+
+  /* estratégia para alinhar elementos com posicionamento absoluto ao centro */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.light #switch button {
+  right: 0;
+  left: initial;
+}
+
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+
+/* links */
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  padding: 24px 0;
+}
+
+ul li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 24px;
+
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  text-decoration: none;
+  font-weight: 500;
+
+  transition: background 0.2s;
+}
+
+/* hover é um pseudo-selector*/
+ul li a:hover {
+  border: 1.5px solid var(--text-color);
+  background: var(--surface-color-hover);
+}
+
+/* social-links */
+#social-links {
+  display: flex;
+  padding: 24px 0;
+  font-size: 24px;
+  justify-content: center;
+}
+
+#social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border-radius: 50px;
+  transition: background 0.2s;
+}
+
+#social-links a:hover {
+  background: var(--social-links-hover);
+}
+
+footer {
+  padding: 24px 0;
+  text-align: center;
+  font-size: 14px;
+}
